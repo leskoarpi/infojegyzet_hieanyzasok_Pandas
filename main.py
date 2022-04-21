@@ -1,11 +1,8 @@
 import pandas as pd
-
 df = pd.read_csv('szeptember.csv', encoding=("latin2"), sep=';')
-#column_list = list(df)
 
 #2 mulasztott orak
 osszes_mul = df['Mulasztott órák'].sum()
-
 print(f'2.feladat \n\t Összes mulasztott órák száma: {osszes_mul}')
 
 #3 bekeres
@@ -27,5 +24,8 @@ for index in df.index:
     if df['Első nap'][index] == nap or df['Utolsó nap'][index] == nap:
         print(f'\t { df["Név"][index]} ({df["Osztály"][index]})')
 
-#6 hianyzasok száma osztalyonkent (csak pandas segitseggel):::::::::::::.......
-'''nem jottem ra még'''
+#6 hianyzasok száma osztalyonkent pandas
+halmaz = set(df["Osztály"])
+with open('osszegzes.csv', 'w') as out:
+    for i in halmaz:
+        out.write(f'{i};{df[df["Osztály"]==i].sum()["Mulasztott órák"]}\n')
