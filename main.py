@@ -28,4 +28,4 @@ for index in df.index:
 halmaz = set(df["Osztály"])
 with open('osszegzes.csv', 'w') as out:
     for i in halmaz:
-        out.write(f'{i};{df[df["Osztály"]==i].sum()["Mulasztott órák"]}\n')
+        out.write(f'{i};{df[df["Osztály"]==i].sum()["Mulasztott órák"]}\n')         #nincs sorrendben viszont a feladatban nem követelmény
